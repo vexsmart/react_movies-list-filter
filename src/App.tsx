@@ -9,7 +9,7 @@ type Movie = {
   description: string;
   imgUrl: string;
   imdbUrl: string;
-}
+};
 
 export const App: React.FC = () => {
   const [query, setQuery] = useState<string>('');
@@ -19,12 +19,12 @@ export const App: React.FC = () => {
   };
 
   const normalizedQuery: string = query.toLowerCase().trim();
-  const visibleMovies: Movie[]  = [...moviesFromServer].filter(movie => {
+  const visibleMovies: Movie[] = moviesFromServer.filter(movie => {
     return (
       movie.title.toLowerCase().includes(normalizedQuery) ||
       movie.description.toLowerCase().includes(normalizedQuery)
     );
-  })
+  });
 
   return (
     <div className="page">
@@ -43,7 +43,7 @@ export const App: React.FC = () => {
                 className="input"
                 placeholder="Type search word"
                 value={query}
-                onChange={(event) => handleSearch(event)}
+                onChange={event => handleSearch(event)}
               />
             </div>
           </div>
